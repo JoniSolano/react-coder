@@ -17,17 +17,19 @@
     padding-left: 0;
 }
 
-.nav-bar > ul > li > button{
+.nav-bar > ul > li > .botones{
+    text-decoration: none;
+    text-transform: uppercase;
     font-size: 1rem;
     font-weight: 500;
-    background-color: #1C2541;
     color: white;
     border-radius: 1rem;
     padding: 0.4rem 1rem;
     border: 0px;
+    transition: 0.5s;
 }
 
-.nav-bar > ul > li > button:hover{
+.nav-bar > ul > li > .botones:hover{
     background-color: white;
     color: #1C2541;
     cursor: pointer;
