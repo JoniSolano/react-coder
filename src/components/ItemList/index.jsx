@@ -1,6 +1,5 @@
 import { Box } from "@mui/material";
 import Item from "../Item";
-// import "./itemList.css";
 
 function ItemList({products}) {
     return (

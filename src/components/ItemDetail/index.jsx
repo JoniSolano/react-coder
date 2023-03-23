@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import React, {useState} from "react";
 import products from "../../mocks/products";
 import "./itemDetail.css";
@@ -11,17 +12,19 @@ function ItemDetail ({product=products}) {
             <div className="detalleProd">
                 <div className="detalles">
                     <h2>{product.name}</h2>
-                    <p>{product.description}</p>
+                    <p>"{product.description}"</p>
                     <p>${product.price}</p>
                 </div>
                 <div className="count">
-                    <button onClick={() => setQuantity(quantity -1)}>-</button>
+                    <button className="botonCount" onClick={() => setQuantity(quantity -1)}>-</button>
                     <p>{quantity}</p>
-                    <button onClick={() => setQuantity(quantity + 1)}>+</button>
+                    <button className="botonCount" onClick={() => setQuantity(quantity + 1)}>+</button>
                 </div>
                 <div className="acciones">
-                    <button>Comprar</button>
-                    <button>Añadir al carrito</button>
+                    <Button className="botonAccion" variant="outlined"
+                    >Comprar</Button>
+                    <Button className="botonAccion" variant="outlined"
+                    >Añadir al carrito</Button>
                 </div>
             </div>  
         </div>
