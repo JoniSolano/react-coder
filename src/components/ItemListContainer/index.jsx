@@ -1,14 +1,15 @@
 import Products from "../../mocks/products";
 import { useEffect, useState} from "react";
 import ItemList from "../ItemList";
-import "./itemListContainer.css";
+import { Container } from "@mui/material";
+// import "./itemListContainer.css";
 
 function ItemListContainer ({ categoryId, isCategoryRoute }) {
     const [products, setProducts] = useState([])
     useEffect(() => {
-        const productsPromise = new Promise((resolve, reject) => setTimeout (() => resolve(Products), 2000))
+        const getProducts = new Promise((resolve, reject) => setTimeout (() => resolve(Products), 2000))
 
-        productsPromise
+        getProducts
         .then((response) => {
             if (isCategoryRoute) {
                 const productsFiltered = response.filter((product) => product.category === categoryId
@@ -23,15 +24,10 @@ function ItemListContainer ({ categoryId, isCategoryRoute }) {
 
     }, [categoryId]);
 
-    console.log({products});
-
-    // const productsList = Products
     return (
-        <div>
-            <ul>
+        <Container maxWidth={false} sx={{ backgroundColor: "#FFFCF2"}}>
                 <ItemList products={products}/>
-            </ul>
-        </div>)
+        </Container>)
         }
 
 export default ItemListContainer;

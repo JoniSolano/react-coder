@@ -1,15 +1,15 @@
-.nav-bar{
+.navBar{
     height: 90px;
-    background-color: #5BC0BE;
+    background-color: #252422;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0 1.2rem;
-    color: #1C2541;
+    padding: 0 2.5rem;
+    color: #FFFCF2;
 }
 
-.nav-bar > ul {
+.navBar > ul {
     display: flex;
     align-items: center;
     list-style: none;
@@ -17,24 +17,24 @@
     padding-left: 0;
 }
 
-.nav-bar > ul > li > .botones{
+.navBar > ul > li > .botones{
     text-decoration: none;
     text-transform: uppercase;
     font-size: 1rem;
     font-weight: 500;
-    color: white;
+    color: #FFFCF2;
     border-radius: 1rem;
     padding: 0.4rem 1rem;
     border: 0px;
     transition: 0.5s;
 }
 
-.nav-bar > ul > li > .botones:hover{
-    background-color: white;
-    color: #1C2541;
+.navBar > ul > li > .botones:hover{
+    /* background-color: white; */
+    color: #EB5E28;
     cursor: pointer;
 }
 
-.nav-bar > ul > li > img {
+.navBar > ul > li > img {
     width: 80px;
 }
