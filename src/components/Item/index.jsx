@@ -21,7 +21,7 @@ function Item({product}) {
                 <img className="foto" src={product.image} alt={product.name} />
                 <h3>{product.name}</h3>
                 <Typography variant="span" sx={{color: "#EB5E28"}}>${product.price}</Typography>
-                <Link className="verMas" to={`item/${product.id}`}>
+                <Link className="verMas" to={`/item/${product.id}`}>
                     <Button variant="outlined" endIcon={<ArrowForwardIosIcon />}
                     sx={{
                         mt: 1,
