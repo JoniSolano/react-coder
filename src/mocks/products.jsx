@@ -15,7 +15,7 @@ export default [
         description: 'Muzzarella y aceitunas',
         price: 1200,
         image: pizza1,
-        stock: 5,
+        stock: 15,
         category: 'pizzas'
     },
     {
@@ -24,7 +24,7 @@ export default [
         description: 'Muzarella y tomate',
         price: 1300,
         image: pizza2,
-        stock: 5,
+        stock: 15,
         category: 'pizzas'
     },
     {
@@ -33,7 +33,7 @@ export default [
         description: 'Muzarella y cebolla',
         price: 1300,
         image: pizza3,
-        stock: 5,
+        stock: 15,
         category: 'pizzas'
     },
     {
@@ -42,7 +42,7 @@ export default [
         description: 'Medallon de carne de 160Grs, doble cheddar',
         price: 1100,
         image: burguer1,
-        stock: 5,
+        stock: 15,
         category: 'burguers'
     },
     {
@@ -51,7 +51,7 @@ export default [
         description: 'Medallon de carne de 160Grs, doble cheddar y doble panceta',
         price: 1300,
         image: burguer2,
-        stock: 5,
+        stock: 15,
         category: 'burguers'
     },
     {
@@ -60,7 +60,7 @@ export default [
         description: 'Medallon de carne de 160Grs,cebolla caramelizada, doble cheddar y doble panceta',
         price: 1400,
         image: burguer3,
-        stock: 5,
+        stock: 15,
         category: 'burguers'
     },
     {
@@ -69,7 +69,7 @@ export default [
         description: 'esta es la descripcion de producto',
         price: 600,
         image: cerveza1,
-        stock: 5,
+        stock: 15,
         category: 'cervezas'
     },
     {
@@ -78,7 +78,7 @@ export default [
         description: 'esta es la descripcion de producto',
         price: 600,
         image: cerveza2,
-        stock: 5,
+        stock: 15,
         category: 'cervezas'
     },
     {
@@ -87,7 +87,7 @@ export default [
         description: 'esta es la descripcion de producto',
         price: 600,
         image: cerveza3,
-        stock: 5,
+        stock: 15,
         category: 'cervezas'
     },
 ]

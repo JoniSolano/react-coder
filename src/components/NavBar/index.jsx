@@ -22,7 +22,9 @@ function NavBar() {
                     <NavLink className="botones" to={"/category/cervezas"}>Cervezas</NavLink>
                 </li>
             </ul>
-            <CartWidget />
+            <NavLink to={"/cart"}>
+                <CartWidget />
+            </NavLink>  
         </div>
     );
 }

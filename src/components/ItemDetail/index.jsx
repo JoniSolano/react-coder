@@ -1,10 +1,18 @@
-import { Button } from "@mui/material";
-import React, {useState} from "react";
+// import { Button } from "@mui/material";
+import React, {useState, useContext} from "react";
+import { Context } from "../../Context";
 import products from "../../mocks/products";
+import ItemCount from "../itemCount";
+import { Link } from "react-router-dom";
 import "./itemDetail.css";
 
-function ItemDetail ({product=products}) {
-    const [quantity, setQuantity] = useState(1);
+export const ItemDetail = ({product=products}) => {
+    const {addProduct} = useContext(Context);
+    const [goToCart, setGoToCart] = useState(false);
+    function onAdd(quantity) {
+        setGoToCart(true);
+        addProduct(product, quantity);
+    }
 
     return (
         <div className="containerProd">
@@ -15,17 +23,11 @@ function ItemDetail ({product=products}) {
                     <p>"{product.description}"</p>
                     <p>${product.price}</p>
                 </div>
-                <div className="count">
-                    <button className="botonCount" onClick={() => setQuantity(quantity -1)}>-</button>
-                    <p>{quantity}</p>
-                    <button className="botonCount" onClick={() => setQuantity(quantity + 1)}>+</button>
-                </div>
-                <div className="acciones">
-                    <Button className="botonAccion" variant="outlined"
-                    >Comprar</Button>
-                    <Button className="botonAccion" variant="outlined"
-                    >Añadir al carrito</Button>
-                </div>
+                {
+                    goToCart
+                    ? <Link to='/cart'>Terminar compra</Link>
+                    : <ItemCount initial={1} stock={product.stock} onAdd={onAdd} />
+                }
             </div>  
         </div>
     )

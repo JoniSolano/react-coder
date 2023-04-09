@@ -1,8 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import {createBrowserRouter, RouterProvider,} from "react-router-dom";
 import Root from './routes/root'
 import ItemRoot from './routes/itemRoot';
-import {createBrowserRouter, RouterProvider,} from "react-router-dom";
+import Cart from './routes/cart';
+import CustomProvider from "./Context";
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -29,7 +31,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/cart",
-    element: <div>Hello world!</div>,
+    element: <Cart />,
   },
   {
     path: "/checkout",
@@ -39,7 +41,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-     <CssBaseline />
-     <RouterProvider router={router} />
+    <CustomProvider>
+      <CssBaseline />
+      <RouterProvider router={router} />
+    </CustomProvider>
   </React.StrictMode>,
 )
