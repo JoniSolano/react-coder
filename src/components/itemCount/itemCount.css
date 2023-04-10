@@ -1,0 +1,31 @@
+.countContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0;
+    gap: 0.5rem;
+}
+
+.botonCount {
+    background-color: #EB5E28;
+    width: 35px;
+    border-radius: 1rem;
+    font-size: 1.5rem;
+    color: #252422;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.count {
+    padding: 0 1rem;
+}
+
+.botonAccion {
+    background-color: #EB5E28;
+    border-radius: 1.5rem;
+    color: #252422;
+    font-size: 1rem;
+    font-weight: bold;
+    height: 2.5rem;
+    margin-bottom: -1rem;
+    cursor: pointer;
+}

@@ -3,6 +3,7 @@ import { Context } from '../../Context';
 import { addDoc,collection,doc,getFirestore,updateDoc} from "firebase/firestore";
 import { NavLink } from "react-router-dom";
 import { Form, Button } from 'react-bootstrap';
+import "./checkout.css"
 
 const Checkout = () => {
     const {productsCart, clearCart} = useContext(Context);
@@ -43,21 +44,18 @@ const Checkout = () => {
         }
 
         return(
-            <div>
-                <h3>Para Finalizar su pedido, complete el formulario</h3>
-                <form>                
-                    <Form.Label className="textoLabel">Nombre Completo</Form.Label>
-                    <Form.Control id="formName" type="text" placeholder="Ingrese Nombre completo" required/>
+            <div className='checkoutContainer'>
+                <h2>Para finalizar su pedido, complete el formulario:</h2>
+                <form className='formContainer'>                
+                    <Form.Label className="formTitle">Nombre Completo</Form.Label>
+                    <Form.Control className="formText" id="formName" type="text" placeholder="Ingrese Nombre completo" required/>
 
-                    <Form.Label className="textoLabel">Telefono</Form.Label>
-                    <Form.Control id="formPhone" type="number" placeholder="Ingrese telefono" required/>
+                    <Form.Label className="formTitle">Telefono</Form.Label>
+                    <Form.Control className="formText" id="formPhone" type="number" placeholder="Ingrese telefono" required/>
 
-                    <Form.Label className="textoLabel">Email</Form.Label>
-                    <Form.Control id="formEmail" type="email" placeholder="Ingrese su email" required/>
-                    <NavLink to={'/cart'}>
-                        <Button variant="success">Ver Pedido </Button>
-                    </NavLink>
-                    <Button variant="primary" className="formButton" onClick={sendOrder} >Realizar compra </Button>{" "}
+                    <Form.Label className="formTitle">Email</Form.Label>
+                    <Form.Control className="formText" id="formEmail" type="email" placeholder="Ingrese su email" required/>
+                    <Button className="buttonCompra" variant="primary" onClick={sendOrder} >Realizar compra </Button>{" "}
                 </form>
             </div>
         );

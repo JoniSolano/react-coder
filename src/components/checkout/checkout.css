@@ -1,0 +1,40 @@
+.checkoutContainer {
+    margin: auto;
+    max-width: 1280px;
+    margin-top: 5rem;
+}
+
+.checkoutContainer > h2 {
+    margin-bottom: 3rem;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.formTitle {
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-top: 1rem;
+}
+
+.formText {
+    font-size: 1rem;
+    border-radius: 1rem;
+    padding-left: .5rem;
+    height: 2.3rem;
+}
+
+.buttonCompra {
+    background-color: #EB5E28;
+    border-radius: 1.5rem;
+    color: #252422;
+    font-size: 1rem;
+    font-weight: bold;
+    height: 2.5rem;
+    cursor: pointer;
+    margin-top: 2rem;
+
+}
+

@@ -1,0 +1,9 @@
+.totalCount {
+    display: flex;
+    border-top: 1px solid gray;
+    justify-content: center;
+    margin: 2rem auto;
+    padding-top: 1rem;
+    gap: 30rem;
+    text-transform: uppercase;
+}
