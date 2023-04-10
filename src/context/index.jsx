@@ -73,6 +73,8 @@ function CustomProvider({children}) {
             addProduct,
             totalPrice,
             totalProducts,
+            sendOrder,
+            updateOrder,
             productsCart
         }}>
             {children}
