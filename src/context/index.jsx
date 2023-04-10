@@ -34,37 +34,6 @@ function CustomProvider({children}) {
 
     const removeProduct = (id) => setProductsCart(productsCart.filter(product =>product.id !== id));
 
-    const db = getFirestore();
-    const sendOrder = (name, email, phone) => {
-    const totalBuy = cartProducts.reduce((total, product) => total + product.quantity * product.price, 0);
-    const order = {
-      buyer: {
-        name: name,
-        email: email,
-        phone: phone,
-      },
-      items: cartProducts,
-      totalBuy,
-    };
-    const collectionRef = collection(db, 'orders');
-    addDoc(collectionRef, order)
-      .then((data) => {
-        const orderId = data.id;
-        setOrderId(orderId);
-        cartProducts.forEach((product) => {
-          const updatedStock = product.stock - product.quantity;
-          updateDoc(doc(db, 'products', product.id), { stock: updatedStock });
-        });
-      })
-      .catch((error) =>
-   console.log({ error }));
-  }
-    function updateOrder(productId, updatedStock) {
-        const itemToUpdate = doc(db, "Items", productId);
-        updateDoc(itemToUpdate, { stock: updatedStock });
-    }
-
-
     return (
         <Context.Provider value={{
             clearCart,
@@ -73,8 +42,6 @@ function CustomProvider({children}) {
             addProduct,
             totalPrice,
             totalProducts,
-            sendOrder,
-            updateOrder,
             productsCart
         }}>
             {children}

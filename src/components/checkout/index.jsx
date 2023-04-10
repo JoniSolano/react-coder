@@ -1,42 +1,66 @@
-import { useContext, useState } from 'react';
+import { useContext} from 'react';
 import { Context } from '../../Context';
+import { addDoc,collection,doc,getFirestore,updateDoc} from "firebase/firestore";
+import { NavLink } from "react-router-dom";
+import { Form, Button } from 'react-bootstrap';
 
 const Checkout = () => {
-    const {productsCart, } = useContext(Context);
-    const [name, setName] = useState('');
-    const [phone, setPhone] = useState('');
-    const [email, setEmail] = useState('');
-    const [emailConfirm, setEmailConfirm] = useState('');
+    const {productsCart, clearCart} = useContext(Context);
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        if(email !== emailConfirm) {
-            alert('Los correos electronicos no coinciden')
-            return;
-        }
-        sendOrder(name, email, phone);
+    const db = getFirestore();
+
+    function updateOrder(productId,finalStock){
+        const itemRef = doc(db,"items",productId);
+        updateDoc(itemRef,{stock: finalStock}).catch((error)=> console.log(error));
+    }
+
+    function sendOrder(){
+        const name = document.getElementById("formName").value;
+        const phone = document.getElementById("formPhone").value;
+        const email = document.getElementById("formEmail").value;
+
+        const collectionRef = collection(db,"orders");
+        const total = productsCart.reduce((accum,elem)=> accum + (elem.quantity * elem.price),0);
+        const fecha = new Date().toLocaleDateString();
+
+        const order = {
+            buyer: {name: `${name}`,email:`${email}`,phone:`${phone}`},
+            items: productsCart,
+            fecha,
+            total,
     };
 
-    return (
-        <div>
-            <h1>Formulario de compra</h1>
-            <form onSubmit={handleSubmit}>
-                <input type="text" value={name} onChange={(e) => setName(e.target.value)}  aria-label='Nombre y Apellido' required placeholder='Nombre y apellido' />
-                <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} required aria-label='Telefono' placeholder='Telefono' />
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required aria-label='email' placeholder='Email'/>
-                <input type="email" value={emailConfirm} onChange={(e) => setEmailConfirm(e.target.value)} required aria-label='Confirmar Email' placeholder='Repita su email' />
-                <button>Comprar</button>
-            </form>
-            <h3>Resumen de compra</h3>
-            <ul>
-                {productsCart.map((product) => (
-                    <li key={product.id}>
-                        {product.name} x{product.quantity} <span>unidades</span> ${product.price}
-                    </li>
-                ))}
-            </ul>
-        </div>
-    )
+    addDoc(collectionRef,order)
+            .then(()=>{
+                productsCart.map((product)=>{
+                    const finalStock = product.stock - product.quantity;
+                    updateOrder(product.id,finalStock);
+                });
+                alert("La operacion fue realizada con exito. Muchas gracias por su compra!");
+                clearCart();
+            })
+            .catch((error)=>console.log(error))
+        }
+
+        return(
+            <div>
+                <h3>Para Finalizar su pedido, complete el formulario</h3>
+                <form>                
+                    <Form.Label className="textoLabel">Nombre Completo</Form.Label>
+                    <Form.Control id="formName" type="text" placeholder="Ingrese Nombre completo" required/>
+
+                    <Form.Label className="textoLabel">Telefono</Form.Label>
+                    <Form.Control id="formPhone" type="number" placeholder="Ingrese telefono" required/>
+
+                    <Form.Label className="textoLabel">Email</Form.Label>
+                    <Form.Control id="formEmail" type="email" placeholder="Ingrese su email" required/>
+                    <NavLink to={'/cart'}>
+                        <Button variant="success">Ver Pedido </Button>
+                    </NavLink>
+                    <Button variant="primary" className="formButton" onClick={sendOrder} >Realizar compra </Button>{" "}
+                </form>
+            </div>
+        );
 }
 
 export default Checkout;
