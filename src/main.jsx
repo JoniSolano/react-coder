@@ -13,6 +13,19 @@ import '@fontsource/roboto/700.css';
 
 import { CssBaseline } from "@mui/material";
 
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBAGsHJQIOLZEkp8hg5CHJEVOp2tP1ECto",
+  authDomain: "ecommerce-solano.firebaseapp.com",
+  projectId: "ecommerce-solano",
+  storageBucket: "ecommerce-solano.appspot.com",
+  messagingSenderId: "306538939189",
+  appId: "1:306538939189:web:e7827f58c8dbca43ae427c"
+};
+
+const app = initializeApp(firebaseConfig);
+
 
 
 

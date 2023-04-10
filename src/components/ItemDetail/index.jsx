@@ -21,7 +21,8 @@ export const ItemDetail = ({product=products}) => {
                 <div className="detalles">
                     <h2>{product.name}</h2>
                     <p>"{product.description}"</p>
-                    <p>${product.price}</p>
+                    <p>Precio: ${product.price}</p>
+                    <p>Stock: {product.stock}</p>
                 </div>
                 {
                     goToCart

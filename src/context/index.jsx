@@ -15,7 +15,7 @@ function CustomProvider({children}) {
         }
     }
 
-    console.log('carrito: ', productsCart);
+    // console.log('carrito: ', productsCart);
 
     const clearCart = () => setProductsCart([]);
 

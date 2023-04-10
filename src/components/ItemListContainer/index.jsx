@@ -1,28 +1,35 @@
-import Products from "../../mocks/products";
+import {collection, getDocs, getFirestore, query, where,} from "firebase/firestore";
 import { useEffect, useState} from "react";
 import ItemList from "../ItemList";
 import { Container } from "@mui/material";
-// import "./itemListContainer.css";
 
 function ItemListContainer ({ categoryId, isCategoryRoute }) {
     const [products, setProducts] = useState([])
+
+    const getDocsFromFirebase = async (collection) => {
+        await getDocs(collection)
+          .then((snapshot) => {
+            const docs = snapshot.docs;
+            setProducts(docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+          })
+          .catch((error) => console.log({ error }));
+      };
+
     useEffect(() => {
-        const getProducts = new Promise((resolve, reject) => setTimeout (() => resolve(Products), 2000))
-
-        getProducts
-        .then((response) => {
-            if (isCategoryRoute) {
-                const productsFiltered = response.filter((product) => product.category === categoryId
-            );
-            setProducts(productsFiltered);
-            } else {
-                setProducts(response);
-            }
-             
-        })
-        .catch((err) => console.log(err));
-
-    }, [categoryId]);
+        const db = getFirestore();
+        const itemsCollection = collection(db, "items");
+    
+        if (isCategoryRoute) {
+          const queryResult = query(
+            itemsCollection,
+            where("category", "==", categoryId)
+          );
+    
+          getDocsFromFirebase(queryResult);
+        } else {
+          getDocsFromFirebase(itemsCollection);
+        }
+      }, [categoryId]);
 
     return (
         <Container maxWidth={false} sx={{ backgroundColor: "#FFFCF2"}}>
