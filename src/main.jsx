@@ -4,6 +4,7 @@ import {createBrowserRouter, RouterProvider,} from "react-router-dom";
 import Root from './routes/root'
 import ItemRoot from './routes/itemRoot';
 import Cart from './routes/cart';
+import CheckoutRoot from './routes/checkoutRoot';
 import CustomProvider from "./Context";
 
 import '@fontsource/roboto/300.css';
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/checkout",
-    element: <div>Hello world!</div>,
+    element: <CheckoutRoot />,
   },
 ]);
 

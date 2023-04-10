@@ -22,6 +22,9 @@ const CartContainer = () => {
                 productsCart.map(product => <ItemCart key={product.id} product={product} />)
             }
             <p>Total: ${totalPrice()}</p>
+            <Link to={"/checkout"}>
+                <button>Terminar Compra</button>
+            </Link>
         </div>
     );
 }
